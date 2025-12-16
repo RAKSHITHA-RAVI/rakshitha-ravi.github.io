@@ -1,256 +1,706 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <title>Rakshitha Bangalore Ravishankar | Data Engineer</title>
+  <title>Rakshitha Bangalore Ravishankar | Data Engineer & Analyst</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     :root {
-      --bg: #09090f;
-      --bg2: #0f0f17;
-      --text: #f5f5f7;
-      --subtext: #b3b3c3;
-      --accent: #5aa5ff;
-      --card: #14141f;
-      --border: #20202b;
+      --bg: #020617;
+      --bg-elevated: rgba(15, 23, 42, 0.85);
+      --bg-card: rgba(15, 23, 42, 0.9);
+      --text: #f9fafb;
+      --subtext: #9ca3af;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.16);
+      --border: rgba(148, 163, 184, 0.25);
+      --danger: #f97373;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Inter", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
       scroll-behavior: smooth;
     }
 
     body {
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top left, #0f172a 0, transparent 55%),
+        radial-gradient(circle at top right, #0b1120 0, transparent 55%),
+        #020617;
       color: var(--text);
       line-height: 1.6;
     }
 
     a {
-      color: var(--accent);
+      color: inherit;
       text-decoration: none;
     }
 
-    a:hover {
-      opacity: 0.85;
-    }
-
     .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
-      padding-top: 4rem;
+      width: 92%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding-top: 4.5rem;
+      padding-bottom: 3rem;
     }
 
-    /* NAVBAR ------------------------------------------- */
+    /* NAVBAR ---------------------------------------------------- */
     nav {
-      width: 100%;
-      padding: 1rem 0;
       position: fixed;
-      top: 0;
-      left: 0;
-      background: rgba(9, 9, 15, 0.7);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
+      inset: 0 0 auto 0;
+      padding: 0.75rem 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.7),
+        transparent
+      );
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(30, 64, 175, 0.5);
+      z-index: 50;
     }
 
     nav .inner {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
+      width: 92%;
+      max-width: 1120px;
+      margin: 0 auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--accent);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+    }
+
+    .brand-text {
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--subtext);
+    }
+
+    .brand-text span {
+      color: var(--accent);
     }
 
     nav ul {
-      display: flex;
-      gap: 1.5rem;
       list-style: none;
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.9rem;
     }
 
     nav ul li a {
       color: var(--subtext);
-      font-size: 0.95rem;
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
     }
 
     nav ul li a:hover {
       color: var(--text);
     }
 
-    /* TAG STYLING -------------------------------------------------- */
+    /* GENERIC SECTION STYLES ----------------------------------- */
+    section {
+      padding: 4.5rem 0 0;
+    }
+
+    .section-header {
+      margin-bottom: 1.8rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--subtext);
+      max-width: 36rem;
+    }
+
     .tag {
-      padding: 5px 10px;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 20px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(15, 23, 42, 0.9);
       font-size: 0.75rem;
       color: var(--subtext);
     }
 
-    /* HERO SECTION -------------------------------------------------- */
+    /* HERO ------------------------------------------------------ */
     #home {
-      padding: 6rem 0 3rem;
+      padding-top: 5.5rem;
     }
 
-    .hero-container {
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
       gap: 2.5rem;
       align-items: center;
     }
 
-    .hero-heading {
-      font-size: 2.6rem;
-      line-height: 1.2;
-      margin-bottom: 1rem;
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--accent);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
     }
 
-    .hero-heading span {
+    .hero-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      line-height: 1.2;
+      margin-top: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title span {
       color: var(--accent);
     }
 
-    .hero-subtext {
+    .hero-text {
+      font-size: 0.98rem;
       color: var(--subtext);
-      max-width: 550px;
-      margin-bottom: 1.5rem;
+      max-width: 35rem;
     }
 
-    .hero-buttons {
+    .hero-chips {
       display: flex;
-      gap: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.3rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
       margin-bottom: 2rem;
     }
 
-    .btn.primary {
-      padding: 10px 20px;
-      background: var(--accent);
-      color: #000;
-      border-radius: 8px;
-      font-weight: 600;
-      border: none;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease,
+        border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .btn.outline {
-      padding: 10px 20px;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      border-radius: 8px;
+    .btn-primary {
+      background: radial-gradient(circle at top left, #38bdf8, #2563eb);
+      color: #020617;
+      box-shadow: 0 0 26px rgba(56, 189, 248, 0.8);
     }
 
-    .hero-photo {
-      width: 230px;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 30px rgba(90, 165, 255, 0.4);
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--subtext);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.35);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      font-size: 0.82rem;
+      color: var(--subtext);
+    }
+
+    .hero-meta-item span {
       display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* HERO RIGHT: PHOTO + CARD ---------------------------------- */
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-photo-ring {
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
+      inset: 0;
       margin: auto;
     }
 
-    .code-card {
-      background: var(--card);
-      border: 1px solid var(--border);
+    .hero-photo {
+      width: 190px;
+      height: 190px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 3px solid rgba(15, 23, 42, 1);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: radial-gradient(
+        circle,
+        rgba(56, 189, 248, 0.35),
+        transparent 60%
+      );
+      filter: blur(2px);
+      top: 10px;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    .hero-card {
+      border-radius: 1rem;
+      background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.9)
+      );
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.9);
       padding: 1rem;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
-      margin-top: 1.2rem;
+      font-size: 0.78rem;
     }
 
-    pre {
-      white-space: pre-wrap;
-      font-family: "JetBrains Mono", monospace;
-      color: var(--text);
-    }
-
-    /* SECTIONS ------------------------------------------------------ */
-    section {
-      margin-top: 6rem;
-    }
-
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    section p.sub {
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
       color: var(--subtext);
-      max-width: 700px;
-      margin-bottom: 2rem;
     }
 
-    /* SKILLS -------------------------------------------------------- */
+    .hero-card-badge {
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      color: #bbf7d0;
+      background: rgba(22, 163, 74, 0.14);
+      font-size: 0.68rem;
+    }
+
+    /* CODE BLOCK */
+    .code {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+        Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      background: rgba(15, 23, 42, 1);
+      border-radius: 0.7rem;
+      padding: 0.65rem;
+      border: 1px solid rgba(30, 64, 175, 0.6);
+      overflow-x: auto;
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: var(--subtext);
+      margin-bottom: 0.4rem;
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 0.2rem;
+    }
+
+    .code-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+    }
+
+    .code-dot.red {
+      background: #fb7185;
+    }
+
+    .code-dot.yellow {
+      background: #facc15;
+    }
+
+    .code-dot.green {
+      background: #4ade80;
+    }
+
+    .kw {
+      color: #60a5fa;
+    }
+
+    .str {
+      color: #facc15;
+    }
+
+    .comment {
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    /* SKILLS ---------------------------------------------------- */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
     }
 
     .skill-card {
-      background: var(--card);
-      padding: 1rem;
-      border-radius: 12px;
+      border-radius: 1rem;
       border: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 0.9rem 1rem;
+      font-size: 0.86rem;
     }
 
-    /* PROJECTS -------------------------------------------------------- */
+    .skill-title {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      color: var(--subtext);
+      font-size: 0.8rem;
+    }
+
+    /* PROJECTS -------------------------------------------------- */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
     }
 
     .project-card {
-      background: var(--card);
-      padding: 1.5rem;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      transition: 0.3s;
+      border-radius: 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(
+          circle at top left,
+          rgba(56, 189, 248, 0.16),
+          transparent 60%
+        ),
+        var(--bg-card);
+      padding: 1rem 1rem 0.95rem;
+      position: relative;
+      overflow: hidden;
+      font-size: 0.86rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        border-color 0.15s ease;
     }
 
     .project-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
       border-color: var(--accent);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.95);
     }
 
-    /* EXPERIENCE ------------------------------------------------------ */
+    .project-chip {
+      display: inline-flex;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.7rem;
+      color: var(--subtext);
+      margin-bottom: 0.35rem;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .project-meta {
+      font-size: 0.78rem;
+      color: var(--subtext);
+      margin-bottom: 0.55rem;
+    }
+
+    .project-desc {
+      font-size: 0.86rem;
+      color: var(--subtext);
+      margin-bottom: 0.7rem;
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      margin-top: 0.2rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .project-links a {
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* EXPERIENCE ------------------------------------------------ */
     .timeline {
-      border-left: 2px solid var(--accent);
-      padding-left: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 1.1rem 1.2rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+      font-size: 0.86rem;
     }
 
-    .exp-item {
-      margin-bottom: 2rem;
+    .timeline-column-title {
+      font-weight: 600;
+      margin-bottom: 0.6rem;
     }
 
-    .exp-item span {
+    .timeline-item + .timeline-item {
+      margin-top: 0.8rem;
+    }
+
+    .timeline-role {
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .timeline-org {
+      font-size: 0.8rem;
       color: var(--subtext);
     }
 
-    /* CONTACT ---------------------------------------------------------- */
+    .timeline-meta {
+      font-size: 0.76rem;
+      color: var(--subtext);
+      margin-top: 0.1rem;
+    }
+
+    .timeline-bullets {
+      margin-top: 0.35rem;
+      padding-left: 1.1rem;
+      color: var(--subtext);
+    }
+
+    .timeline-bullets li + li {
+      margin-top: 0.22rem;
+    }
+
+    /* CONTACT --------------------------------------------------- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.3fr);
+      gap: 1.4rem;
+    }
+
+    .contact-card {
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 1rem;
+      font-size: 0.88rem;
+      color: var(--subtext);
+    }
+
+    .contact-item {
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-item span {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--subtext);
+    }
+
+    .contact-item a {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
     footer {
-      margin-top: 4rem;
-      padding: 1.5rem 0;
-      text-align: center;
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      padding: 1.2rem 0 1.8rem;
+      margin-top: 3rem;
+      font-size: 0.78rem;
       color: var(--subtext);
+    }
+
+    .footer-inner {
+      width: 92%;
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* RESPONSIVE ----------------------------------------------- */
+    @media (max-width: 900px) {
+      nav ul {
+        gap: 1rem;
+        font-size: 0.85rem;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .projects-grid,
+      .contact-grid,
+      .timeline {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: 92%;
+        padding-top: 4.2rem;
+      }
+      .hero-title {
+        font-size: 2.1rem;
+      }
+      section {
+        padding-top: 3.8rem;
+      }
+      nav .inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <!-- NAVBAR -->
   <nav>
     <div class="inner">
-      <strong>Rakshitha</strong>
+      <div class="brand">
+        <div class="brand-circle">RR</div>
+        <div class="brand-text">Rakshitha <span>Ravishankar</span></div>
+      </div>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -261,213 +711,444 @@
     </div>
   </nav>
 
-
-  <div class="container">
-
-    <!-- ================= HERO ================= -->
+  <main class="container">
+    <!-- HERO -->
     <section id="home">
-      <div class="hero-container">
-
+      <div class="hero-grid">
         <!-- LEFT -->
         <div>
-          <div style="
-              display: inline-block;
-              padding: 6px 14px;
-              border-radius: 20px;
-              border: 1px solid var(--accent);
-              color: var(--accent);
-              font-size: 0.75rem;
-              margin-bottom: 1rem;
-          ">Open to Internship & Full-time Roles • May 2026</div>
+          <div class="hero-badge">
+            <span class="hero-dot"></span>
+            Open to internships & new grad roles · May 2026
+          </div>
 
-          <h1 class="hero-heading">
-            Hi, I’m <span>Rakshitha</span> 👋 <br>
-            I build <span>scalable data pipelines</span>, <br>
-            cloud systems & intelligent analytics.
+          <h1 class="hero-title">
+            Hi, I’m <span>Rakshitha</span> 👋<br />
+            I build <span>scalable data pipelines</span>,<br />
+            cloud-native systems & analytics platforms.
           </h1>
 
-          <p class="hero-subtext">
-            Master’s student at Arizona State University specializing in Data Engineering,
-            Analytics, Cloud Systems, and machine learning–driven automation.
-            I design end-to-end data solutions that help organizations make smarter decisions.
+          <p class="hero-text">
+            Master’s student in Information Technology at Arizona State
+            University, focusing on data engineering, analytics, and cloud
+            platforms. I enjoy turning messy data into reliable, analytics-ready
+            assets and building end-to-end solutions that help teams make
+            confident, data-driven decisions.
           </p>
 
-          <div class="hero-buttons">
-            <a href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/"
-               target="_blank"
-               class="btn primary">LinkedIn</a>
-
-            <a href="YOUR_RESUME_LINK"
-               target="_blank"
-               class="btn outline">Resume</a>
+          <div class="hero-chips">
+            <span class="tag">Data Engineering</span>
+            <span class="tag">ETL / ELT Pipelines</span>
+            <span class="tag">Python · SQL · PySpark</span>
+            <span class="tag">Tableau · Power BI</span>
+            <span class="tag">AWS Lambda · Docker</span>
           </div>
 
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; max-width: 500px;">
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">ETL Pipelines</span>
-            <span class="tag">AWS Lambda</span>
-            <span class="tag">Tableau</span>
-            <span class="tag">Docker</span>
+          <div class="hero-actions">
+            <a
+              href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/"
+              target="_blank"
+              class="btn btn-primary"
+            >LinkedIn</a>
+
+            <a
+              href="YOUR_RESUME_LINK"
+              target="_blank"
+              class="btn btn-ghost"
+            >View Resume</a>
+
+            <a href="#projects" class="btn btn-ghost">View Projects</a>
           </div>
-        </div>
 
-
-        <!-- RIGHT SIDE -->
-        <div>
-          <img src="assets/img.jpg" class="hero-photo">
-
-          <div class="code-card">
-            <div style="color: var(--subtext); margin-bottom: 0.5rem;">etl_pipeline.py</div>
-<pre>
-# Example ETL pipeline
-import pandas as pd
-
-df = pd.read_csv("sales_raw.csv")
-df = df.drop_duplicates("order_id")
-
-df["order_date"] = pd.to_datetime(df["order_date"])
-df = df[df.order_date >= "2024-01-01"]
-
-agg = df.groupby("region").sales_amount.sum()
-
-agg.to_csv("clean/region_sales.csv")
-</pre>
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span>ASU</span>
+              M.S. Information Technology · 4.0 GPA
+            </div>
+            <div class="hero-meta-item">
+              <span>Focus</span>
+              Data Engineering · Analytics · Architecture
+            </div>
+            <div class="hero-meta-item">
+              <span>Certified</span>
+              Google Data Analytics (Coursera)
+            </div>
           </div>
         </div>
 
+        <!-- RIGHT -->
+        <div class="hero-right">
+          <div class="hero-photo-wrap">
+            <div class="hero-glow"></div>
+            <div class="hero-photo-ring"></div>
+            <img src="assets/img.jpg" alt="Rakshitha Photo" class="hero-photo" />
+          </div>
+
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <span>etl_pipeline.py</span>
+              <span class="hero-card-badge">Pipeline · dev</span>
+            </div>
+            <div class="code">
+              <div class="code-header">
+                <div class="code-dots">
+                  <span class="code-dot red"></span>
+                  <span class="code-dot yellow"></span>
+                  <span class="code-dot green"></span>
+                </div>
+                <span>sales_etl()</span>
+              </div>
+              <pre><span class="comment"># example: batch ETL for analytics</span>
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+df = pd.read_csv(<span class="str">"sales_raw.csv"</span>)
+df = df.drop_duplicates(<span class="str">"order_id"</span>)
+
+df[<span class="str">"order_date"</span>] = pd.to_datetime(df[<span class="str">"order_date"</span>])
+df = df[df.order_date &gt;= <span class="str">"2024-01-01"</span>]
+
+agg = (df.groupby(<span class="str">"region"</span>)
+         .sales_amount.sum()
+         .reset_index())
+
+agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class="kw">False</span>)</pre>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-
-    <!-- ================= SKILLS ================= -->
+    <!-- SKILLS -->
     <section id="skills">
-      <h2>Skills</h2>
-      <p class="sub">
-        A combination of data engineering, analytics, ML, cloud, and software capabilities.
-      </p>
+      <div class="section-header">
+        <div class="section-kicker">Skills</div>
+        <h2 class="section-title">Tech stack & strengths</h2>
+        <p class="section-sub">
+          I combine data engineering, analytics, and software fundamentals to
+          design reliable, maintainable data solutions.
+        </p>
+      </div>
 
       <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Programming</h3>
-          <p>Python, SQL, C++, Java, R</p>
-        </div>
-        <div class="skill-card">
-          <h3>Data Engineering</h3>
-          <p>ETL Pipelines, PostgreSQL, Pandas, PySpark</p>
-        </div>
-        <div class="skill-card">
-          <h3>Analytics</h3>
-          <p>Power BI, Tableau, Predictive Modeling, EDA</p>
-        </div>
-        <div class="skill-card">
-          <h3>Cloud & DevOps</h3>
-          <p>AWS Lambda, Docker, GitHub Actions, FastAPI</p>
-        </div>
-        <div class="skill-card">
-          <h3>Productivity</h3>
-          <p>Salesforce, Notion, Jira, Airtable</p>
-        </div>
+        <article class="skill-card">
+          <div class="skill-title">Programming & Querying</div>
+          <div class="skill-tags">
+            Python · SQL · R · C++ · Java
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-title">Data Engineering</div>
+          <div class="skill-tags">
+            ETL / ELT · PostgreSQL · Pandas · PySpark · Data Modeling
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-title">Analytics & BI</div>
+          <div class="skill-tags">
+            Tableau · Power BI · EDA · KPI Design · Reporting
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-title">Cloud & Platform</div>
+          <div class="skill-tags">
+            AWS Lambda · Docker · GitHub Actions · FastAPI · APIs
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-title">Tools & Collaboration</div>
+          <div class="skill-tags">
+            Salesforce · Jira · Confluence · Notion · Airtable
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-title">Soft Skills</div>
+          <div class="skill-tags">
+            Customer-facing communication · Stakeholder management · Teaching
+            & mentoring · Event & team leadership
+          </div>
+        </article>
       </div>
     </section>
 
-
-    <!-- ================= PROJECTS ================= -->
+    <!-- PROJECTS -->
     <section id="projects">
-      <h2>Projects</h2>
-      <p class="sub">Some of the work I've done across data engineering, ML, and analytics.</p>
+      <div class="section-header">
+        <div class="section-kicker">Projects</div>
+        <h2 class="section-title">Selected work</h2>
+        <p class="section-sub">
+          Projects that showcase my ability to engineer data pipelines, build
+          analytics, and design intelligent systems.
+        </p>
+      </div>
 
       <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="project-chip">Data Engineering · Analytics</div>
+          <h3 class="project-title">Enterprise Sales Data Pipeline & Dashboard</h3>
+          <div class="project-meta">Python · SQL · PostgreSQL · Tableau</div>
+          <p class="project-desc">
+            Built a Python → PostgreSQL ETL pipeline for ~1M sales records with
+            near real-time updates and Tableau dashboards tracking KPIs like
+            revenue trends, churn, and product performance.
+          </p>
+          <div class="project-footer">
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Case Study</a>
+            </div>
+            <span>ETL · Star schema · KPIs</span>
+          </div>
+        </article>
 
-        <div class="project-card">
-          <h3>Enterprise Sales Data Pipeline & Dashboard</h3>
-          <p>Built a Python → PostgreSQL ETL system for 1M+ sales records with Tableau analytics.</p>
-          <a href="#">GitHub</a> • <a href="#">Case Study</a>
-        </div>
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="project-chip">Visualization · Healthcare</div>
+          <h3 class="project-title">Diabetes Data Visualization Dashboard</h3>
+          <div class="project-meta">Tableau · Tableau Prep · Excel</div>
+          <p class="project-desc">
+            Designed a Tableau dashboard over 101K+ diabetes records across
+            130 hospitals, surfacing insights on readmissions, medications, and
+            demographic trends for clinical and operational stakeholders.
+          </p>
+          <div class="project-footer">
+            <div class="project-links">
+              <a href="#">Dashboard</a>
+              <a href="#">Details</a>
+            </div>
+            <span>Healthcare analytics · KPIs</span>
+          </div>
+        </article>
 
-        <div class="project-card">
-          <h3>AI-Powered IT Asset Management Chatbot</h3>
-          <p>RAG-based LLM chatbot using FastAPI, Pinecone, Docker & AWS Lambda.</p>
-          <a href="#">GitHub</a> • <a href="#">Architecture</a>
-        </div>
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div class="project-chip">LLMs · Platform</div>
+          <h3 class="project-title">AI-Powered IT Asset Management Chatbot</h3>
+          <div class="project-meta">Python · LangChain · FastAPI · AWS Lambda · Docker</div>
+          <p class="project-desc">
+            Built a RAG-based LLM chatbot that answers IT asset queries, using
+            FastAPI, Pinecone, Docker, and AWS Lambda. Reduced manual search
+            time for asset information by ~60%.
+          </p>
+          <div class="project-footer">
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Architecture</a>
+            </div>
+            <span>RAG · Serverless · APIs</span>
+          </div>
+        </article>
 
-        <div class="project-card">
-          <h3>Diabetes Data Visualization Dashboard</h3>
-          <p>Tableau dashboard analyzing 101K+ medical records across 130 hospitals.</p>
-          <a href="#">Dashboard</a> • <a href="#">Details</a>
-        </div>
-
-        <div class="project-card">
-          <h3>Trading Strategy Analyzer</h3>
-          <p>Backtesting engine with vectorized Python + performance metrics.</p>
-          <a href="#">GitHub</a> • <a href="#">Analysis</a>
-        </div>
-
+        <!-- Project 4 -->
+        <article class="project-card">
+          <div class="project-chip">Backtesting · Quant</div>
+          <h3 class="project-title">Trading Strategy Analyzer</h3>
+          <div class="project-meta">Python · Pandas · NumPy · Matplotlib</div>
+          <p class="project-desc">
+            Implemented a backtesting engine for short-term trading strategies
+            using historical order book data. Vectorized computations for ~10×
+            speedup and visualized PnL, drawdown, and Sharpe ratio.
+          </p>
+          <div class="project-footer">
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Analysis</a>
+            </div>
+            <span>Performance analytics</span>
+          </div>
+        </article>
       </div>
     </section>
 
-
-    <!-- ================= EXPERIENCE ================= -->
+    <!-- EXPERIENCE -->
     <section id="experience">
-      <h2>Experience</h2>
-      <p class="sub">A mix of engineering, analytics, research & leadership work.</p>
+      <div class="section-header">
+        <div class="section-kicker">Experience</div>
+        <h2 class="section-title">Experience & education</h2>
+        <p class="section-sub">
+          A mix of data engineering, analytics, research, customer success, and
+          leadership.
+        </p>
+      </div>
 
       <div class="timeline">
-        <div class="exp-item">
-          <h3>Customer Success Associate & Engineer — Hatica Labs</h3>
-          <span>Feb 2024 – Jun 2024</span>
-          <ul>
-            <li>Led onboarding for engineering analytics SaaS customers.</li>
-            <li>Automated data pipelines using Python & APIs.</li>
-            <li>Created usage dashboards to support renewals.</li>
-          </ul>
+        <div>
+          <div class="timeline-column-title">Industry</div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">
+              Customer Success Associate & Business Analyst
+            </div>
+            <div class="timeline-org">Hatica Labs · India</div>
+            <div class="timeline-meta">Feb 2024 – Jun 2024</div>
+            <ul class="timeline-bullets">
+              <li>
+                Led onboarding and training for an engineering analytics SaaS
+                platform, managing key accounts and supporting renewals.
+              </li>
+              <li>
+                Analyzed product usage and customer behavior to build dashboards
+                and inform customer success strategy.
+              </li>
+              <li>
+                Collaborated with engineering to streamline integrations and
+                improve data workflows.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">Project Trainee – Data & ML</div>
+            <div class="timeline-org">Brillio · India</div>
+            <div class="timeline-meta">Jun 2023 – Sep 2023</div>
+            <ul class="timeline-bullets">
+              <li>
+                Developed data pipelines and ML models for sales forecasting
+                using Python, Pandas, Scikit-learn, and SQL.
+              </li>
+              <li>
+                Delivered dashboards and reports that surfaced key business
+                insights for manufacturing workflows.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">Analyst Intern</div>
+            <div class="timeline-org">Idea Infinity IT Solutions · India</div>
+            <div class="timeline-meta">Mar 2023 – May 2023</div>
+            <ul class="timeline-bullets">
+              <li>
+                Analyzed ATP system transaction data to optimize payment
+                workflows and ensure compliance.
+              </li>
+              <li>
+                Conducted UAT and created SOPs and test protocols for large
+                deployments.
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="exp-item">
-          <h3>Project Trainee — Brillio</h3>
-          <span>Jun 2023 – Sep 2023</span>
-          <ul>
-            <li>Built ML forecasting models using Python and SQL.</li>
-            <li>Created E2E data pipelines and analytics dashboards.</li>
-          </ul>
-        </div>
+        <div>
+          <div class="timeline-column-title">Education & research</div>
 
-        <div class="exp-item">
-          <h3>Analyst Intern — Idea Infinity</h3>
-          <span>Mar 2023 – May 2023</span>
-          <ul>
-            <li>Analyzed transaction workflows and optimized performance.</li>
-            <li>Performed UAT and created SOP documentation.</li>
-          </ul>
-        </div>
+          <div class="timeline-item">
+            <div class="timeline-role">M.S. Information Technology</div>
+            <div class="timeline-org">Arizona State University · USA</div>
+            <div class="timeline-meta">Aug 2024 – May 2026 (expected)</div>
+            <ul class="timeline-bullets">
+              <li>
+                Coursework: Analyzing Big Data, Advanced Database Management,
+                Data Visualization, Information System Development, Predictive Analytics.
+              </li>
+              <li>
+                GPA: 4.0/4.0, with projects focusing on data engineering and analytics.
+              </li>
+            </ul>
+          </div>
 
-        <div class="exp-item">
-          <h3>Research Intern — DRDO</h3>
-          <span>Aug 2022 – Nov 2022</span>
-          <ul>
-            <li>Built BiLSTM multilingual transcription model (88% accuracy).</li>
-          </ul>
+          <div class="timeline-item">
+            <div class="timeline-role">
+              B.E. Information Science & Engineering
+            </div>
+            <div class="timeline-org">BMS College of Engineering · India</div>
+            <div class="timeline-meta">Aug 2019 – Jul 2023</div>
+            <ul class="timeline-bullets">
+              <li>
+                GPA ~3.9/4.0, with coursework in DS & Algorithms, OS, OOP,
+                AI/ML, and Deep Learning.
+              </li>
+              <li>
+                Completed an EEG-based research project and a Python package
+                for preprocessing and visualizing signals.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">Research Intern – NLP</div>
+            <div class="timeline-org">DRDO · India</div>
+            <div class="timeline-meta">Aug 2022 – Nov 2022</div>
+            <ul class="timeline-bullets">
+              <li>
+                Built and fine-tuned a BiLSTM-based multilingual
+                transcription/translation model with 88%+ accuracy using
+                TensorFlow, NLTK, and spaCy.
+              </li>
+              <li>
+                Processed 10k+ annotated samples and documented results in
+                internal reports.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-
-    <!-- ================= CONTACT ================= -->
+    <!-- CONTACT -->
     <section id="contact">
-      <h2>Contact</h2>
-      <p class="sub">Let’s build something amazing together.</p>
+      <div class="section-header">
+        <div class="section-kicker">Contact</div>
+        <h2 class="section-title">Let’s connect</h2>
+        <p class="section-sub">
+          I’m actively looking for internships and new-grad roles in data
+          engineering, data analytics, and related areas.
+        </p>
+      </div>
 
-      <a href="mailto:rbangal9@asu.edu">rbangal9@asu.edu</a><br>
-      <a href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/">LinkedIn</a><br>
-      <a href="https://github.com/YOUR_GITHUB_USERNAME">GitHub</a>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-item">
+            <span>Email</span>
+            <a href="mailto:rbangal9@asu.edu">rbangal9@asu.edu</a>
+          </div>
+          <div class="contact-item">
+            <span>LinkedIn</span>
+            <a
+              href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/"
+              target="_blank"
+            >linkedin.com/in/rakshitha-ravishankar-9b478a203/</a>
+          </div>
+          <div class="contact-item">
+            <span>GitHub</span>
+            <a
+              href="https://github.com/YOUR_GITHUB_USERNAME"
+              target="_blank"
+            >github.com/YOUR_GITHUB_USERNAME</a>
+          </div>
+          <p style="margin-top: 0.7rem;">
+            Feel free to reach out with role details, collaboration ideas, or
+            questions about my projects. I’m always happy to talk about data,
+            engineering, and building useful systems.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-item">
+            <span>Next steps</span>
+            <p>
+              • Download my resume and review my project repositories.<br />
+              • Message me on LinkedIn or email with the role and team
+              details.<br />
+              • I’d love to chat about how I can help build your next data
+              solution.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
-
-  </div>
+  </main>
 
   <footer>
-    © 2025 Rakshitha · Built with ❤️ using HTML & GitHub Pages
+    <div class="footer-inner">
+      <div>© 2025 Rakshitha Bangalore Ravishankar · All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#home">Top</a>
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
   </footer>
-
 </body>
-
 </html>

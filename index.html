@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Your Name | Data Engineer & Analyst</title>
+  <title>Rakshitha Bangalore Ravishankar | Data Engineering & Analytics</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Portfolio of a Data Engineering & Analytics graduate student at Arizona State University."
+    content="Portfolio of Rakshitha Bangalore Ravishankar – Master’s in Information Technology at Arizona State University, focusing on Data Engineering, Analytics, and Data Architecture."
   />
   <style>
     /* ====== GLOBAL STYLES ====== */
@@ -750,7 +750,7 @@
   <header>
     <nav class="nav">
       <div class="nav-left">
-        <div class="logo-circle">RB</div>
+        <div class="logo-circle">RR</div>
         <div class="brand-text">
           Rakshitha <span>Ravishankar</span>
         </div>
@@ -782,24 +782,25 @@
             Open to roles · May 2026 Graduate
           </div>
           <h1>
-            Data Engineering & Analytics
-            <span>graduate student at ASU</span>
+            Data Engineering, Analytics &amp;
+            <span>Platform-focused graduate at ASU</span>
           </h1>
           <p class="hero-subtitle">
-            I’m a Master’s student in Information Technology at Arizona State University
-            (graduating May 2026) focused on building reliable data pipelines, scalable
-            analytics, and cloud-native data platforms for business impact.
+            I’m Rakshitha, a Master’s student in Information Technology at Arizona State University
+            (graduating May 2026), combining data engineering, analytics, and software skills to build
+            reliable pipelines, actionable dashboards, and cloud-native data solutions.
           </p>
           <div class="hero-highlights">
             <div class="pill">Data Engineering</div>
             <div class="pill">Data Analytics</div>
             <div class="pill">Data Architecture</div>
-            <div class="pill">Python · SQL · Spark</div>
-            <div class="pill">Cloud & ETL Pipelines</div>
+            <div class="pill">Python · SQL · PySpark</div>
+            <div class="pill">Tableau · Power BI</div>
+            <div class="pill">AWS Lambda · Docker</div>
           </div>
           <div class="hero-actions">
             <a
-              href="YOUR_LINKEDIN_URL_HERE"
+              href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/"
               target="_blank"
               class="btn btn-primary"
             >
@@ -819,15 +820,15 @@
           <div class="hero-meta">
             <div class="hero-meta-item">
               <span>2026</span>
-              Graduation · M.S. IT, ASU
+              M.S. Information Technology · ASU
             </div>
             <div class="hero-meta-item">
-              <span>Data</span>
-              Engineering · Analytics · Architecture
+              <span>Focus</span>
+              Data Eng · Analytics · Architecture
             </div>
             <div class="hero-meta-item">
-              <span>Open</span>
-              Internships & Full-time opportunities
+              <span>Certified</span>
+              Google Data Analytics (Coursera)
             </div>
           </div>
         </div>
@@ -837,7 +838,7 @@
           <div class="hero-orbit-glow"></div>
           <div class="hero-right-header">
             <span>Data Pipeline Snapshot</span>
-            <span class="hero-right-badge">Running in dev</span>
+            <span class="hero-right-badge">Batch pipeline · dev</span>
           </div>
           <div class="hero-code-block">
             <div class="code-header">
@@ -846,29 +847,29 @@
                 <span class="code-dot yellow"></span>
                 <span class="code-dot green"></span>
               </div>
-              <span>etl_pipeline.py</span>
+              <span>sales_etl.py</span>
             </div>
             <div class="code-body">
-<span class="comment"># Example: batch pipeline for analytics</span>
-<span class="kw">from</span> pyspark.sql <span class="kw">import</span> SparkSession
+<span class="comment"># Example: sales ETL → warehouse-ready table</span>
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> sqlalchemy <span class="kw">as</span> sa
 
-spark <span class="op">=</span> SparkSession.builder\
-    .appName(<span class="str">"student_events_etl"</span>)\
-    .getOrCreate()
+engine <span class="op">=</span> sa.create_engine(<span class="str">"postgresql://etl_user:***@host:5432/sales_dw"</span>)
 
-raw_df   <span class="op">=</span> spark.read.json(<span class="str">"s3://src/events_raw"</span>)
+raw_df   <span class="op">=</span> pd.read_csv(<span class="str">"data/sales_raw.csv"</span>)
 clean_df <span class="op">=</span> (raw_df
-    .dropDuplicates([<span class="str">"event_id"</span>])
-    .filter(<span class="str">"event_ts &gt;= '2024-01-01'"</span>))
+    .drop_duplicates(subset<span class="op">=</span>[<span class="str">"order_id"</span>])
+    .query(<span class="str">"order_date &gt;= '2024-01-01'"</span>)
+    .assign(order_date<span class="op">=</span>lambda df: pd.to_datetime(df[<span class="str">"order_date"</span>]))
+)
 
 agg_df <span class="op">=</span> (clean_df
-    .groupBy(<span class="str">"university"</span>)
-    .agg({<span class="str">"event_id"</span>: <span class="str">"count"</span>})
-    .withColumnRenamed(<span class="str">"count(event_id)"</span>, <span class="str">"event_count"</span>))
+    .groupby([<span class="str">"region"</span>, <span class="str">"product_category"</span>], as_index<span class="op">=</span><span class="kw">False</span>)
+    .agg(revenue<span class="op">=</span>(<span class="str">"sales_amount"</span>, <span class="str">"sum"</span>))
+)
 
-agg_df.write.mode(<span class="str">"overwrite"</span>)\
-    .partitionBy(<span class="str">"university"</span>)\
-    .parquet(<span class="str">"s3://analytics/student_events"</span>)
+agg_df.to_sql(<span class="str">"fct_sales_region_category"</span>, engine,
+              if_exists<span class="op">=</span><span class="str">"replace"</span>, index<span class="op">=</span><span class="kw">False</span>)
             </div>
           </div>
         </div>
@@ -881,28 +882,29 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
         <div class="section-kicker">About</div>
         <h2 class="section-title">Who I am</h2>
         <p class="section-subtitle">
-          Master’s student in Information Technology at Arizona State University,
-          specialising in building data solutions that connect raw data to decision-making.
+          Data-driven and people-focused, with experience across data engineering, analytics,
+          customer success, and research.
         </p>
       </div>
       <div class="about-grid">
         <div class="about-text">
           <p>
-            I am currently pursuing my M.S. in Information Technology at Arizona State
-            University and will graduate in May 2026. My interests span data engineering,
-            data analytics, and data architecture — with a focus on turning complex datasets
-            into reliable, well-modeled, and query-ready assets.
+            I’m currently pursuing my M.S. in Information Technology at Arizona State University
+            and will graduate in May 2026. My background combines engineering, analytics, and
+            stakeholder-facing experience, enabling me to design solutions that are both technically
+            sound and aligned with business needs.
           </p>
           <p>
-            I enjoy designing end-to-end data flows: ingesting from source systems, applying
-            transformations with Python/Spark/SQL, and delivering analytics-ready models to BI
-            tools or downstream applications. I care about clear documentation, reproducible
-            pipelines, and solutions that solve real business problems.
+            Previously, I worked at Hatica on an engineering analytics SaaS platform, where I led
+            onboarding for customers, analyzed usage data, and helped automate data workflows. I’ve
+            also built ML-powered forecasting pipelines at Brillio, optimized transaction workflows
+            at Idea Infinity, and contributed to NLP research at DRDO.
           </p>
           <p>
-            I am actively seeking internships and full-time opportunities where I can help design
-            and build modern data platforms while continuing to grow as a data engineer and
-            analytics professional.
+            Beyond technical work, I’ve taken on leadership roles in NGOs and student organisations,
+            coordinated large-scale events, and served as a teaching assistant for Python and machine
+            learning. I enjoy roles where I can blend data engineering, analytics, documentation, and
+            collaboration to ship impactful products.
           </p>
         </div>
         <div class="about-facts">
@@ -920,8 +922,8 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
             <div class="fact-value">Arizona, USA</div>
           </div>
           <div class="fact-card">
-            <div class="fact-label">Open To</div>
-            <div class="fact-value">Internships · New Grad Roles</div>
+            <div class="fact-label">Certifications</div>
+            <div class="fact-value">Google Data Analytics · Coursera</div>
           </div>
         </div>
       </div>
@@ -931,62 +933,67 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
     <section id="skills">
       <div class="section-header">
         <div class="section-kicker">Skills</div>
-        <h2 class="section-title">Tools & technologies</h2>
+        <h2 class="section-title">Tools &amp; technologies</h2>
         <p class="section-subtitle">
-          A snapshot of the core technologies I work with across data engineering, analytics,
-          and data architecture.
+          A combined view of my skills across data engineering, analytics, software, and collaboration.
         </p>
       </div>
       <div class="skills-grid">
         <div class="skill-card">
-          <div class="skill-title">Programming & Querying</div>
+          <div class="skill-title">Programming &amp; Querying</div>
           <div class="skill-tags">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">SQL</span>
-            <span class="skill-tag">PySpark</span>
-            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">C / C++ / Java</span>
+            <span class="skill-tag">Go (basics)</span>
           </div>
         </div>
         <div class="skill-card">
-          <div class="skill-title">Data Engineering</div>
+          <div class="skill-title">Data Engineering &amp; Databases</div>
           <div class="skill-tags">
-            <span class="skill-tag">ETL / ELT</span>
-            <span class="skill-tag">Batch Processing</span>
-            <span class="skill-tag">Spark</span>
+            <span class="skill-tag">ETL / ELT Pipelines</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Pandas / PySpark</span>
             <span class="skill-tag">Data Modeling</span>
           </div>
         </div>
         <div class="skill-card">
-          <div class="skill-title">Cloud & Storage</div>
-          <div class="skill-tags">
-            <span class="skill-tag">AWS / Azure (learning)</span>
-            <span class="skill-tag">Data Lakes</span>
-            <span class="skill-tag">Warehouses</span>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-title">Analytics & BI</div>
+          <div class="skill-title">Analytics &amp; Data Science</div>
           <div class="skill-tags">
             <span class="skill-tag">Power BI</span>
             <span class="skill-tag">Tableau</span>
-            <span class="skill-tag">Dashboards</span>
-            <span class="skill-tag">Reporting</span>
+            <span class="skill-tag">EDA</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">TensorFlow / NLTK</span>
           </div>
         </div>
         <div class="skill-card">
-          <div class="skill-title">Data Science Basics</div>
+          <div class="skill-title">Cloud, DevOps &amp; Automation</div>
           <div class="skill-tags">
-            <span class="skill-tag">Classification</span>
-            <span class="skill-tag">Model Evaluation</span>
-            <span class="skill-tag">Spark MLlib</span>
+            <span class="skill-tag">AWS Lambda</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Git &amp; GitHub Actions</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">CI/CD</span>
           </div>
         </div>
         <div class="skill-card">
-          <div class="skill-title">Collaboration</div>
+          <div class="skill-title">Platforms &amp; Productivity</div>
           <div class="skill-tags">
-            <span class="skill-tag">Git & GitHub</span>
-            <span class="skill-tag">Agile / Scrum</span>
-            <span class="skill-tag">Documentation</span>
+            <span class="skill-tag">Salesforce</span>
+            <span class="skill-tag">JIRA · Confluence</span>
+            <span class="skill-tag">Notion · Airtable</span>
+            <span class="skill-tag">Tableau Prep</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-title">Soft Skills &amp; Leadership</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Customer-facing Communication</span>
+            <span class="skill-tag">Stakeholder Management</span>
+            <span class="skill-tag">Teaching &amp; Mentoring</span>
+            <span class="skill-tag">Event &amp; Team Leadership</span>
           </div>
         </div>
       </div>
@@ -998,39 +1005,40 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
         <div class="section-kicker">Projects</div>
         <h2 class="section-title">Selected work</h2>
         <p class="section-subtitle">
-          End-to-end projects that demonstrate my ability to engineer data pipelines,
-          design models, and deliver analytics that support decisions.
+          A mix of data engineering, analytics, ML, and platform projects. More details and code
+          are available in the linked GitHub repositories and write-ups.
         </p>
       </div>
       <div class="projects-grid">
         <!-- Project 1 -->
         <article class="project-card">
           <div class="project-glow"></div>
-          <div class="project-chip">Data Engineering · ETL</div>
-          <h3 class="project-title">Student Activity ETL Pipeline</h3>
-          <div class="project-meta">Python · PySpark · Cloud Storage (simulated)</div>
+          <div class="project-chip">Data Engineering · Analytics</div>
+          <h3 class="project-title">Enterprise Sales Data Pipeline &amp; Insights Dashboard</h3>
+          <div class="project-meta">Python · SQL · PostgreSQL · Tableau</div>
           <p class="project-desc">
-            Designed and implemented an end-to-end batch ETL pipeline that ingests raw
-            student event data, applies data quality checks, performs aggregations, and
-            writes analytics-ready tables for downstream dashboards.
+            Built a Python-to-PostgreSQL ETL pipeline for ~1M sales records, enabling near
+            real-time updates to a centralized warehouse. Designed Tableau dashboards tracking
+            KPIs such as revenue trends, churn, and product performance, and used generative AI
+            tools to streamline technical documentation.
           </p>
           <div class="project-footer">
             <div class="project-links">
               <a
                 class="project-link"
-                href="GITHUB_REPO_LINK_PROJECT1"
+                href="#"
                 target="_blank"
-                >Code</a
+                >Code (GitHub)</a
               >
               <a
                 class="project-link"
-                href="LIVE_DEMO_OR_README_LINK_PROJECT1"
+                href="#"
                 target="_blank"
-                >Details</a
+                >Case Study</a
               >
             </div>
             <div class="project-tech">
-              Orchestration-ready · Partitioned outputs · Data quality filters
+              ETL · Star schema · KPI reporting
             </div>
           </div>
         </article>
@@ -1038,31 +1046,32 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
         <!-- Project 2 -->
         <article class="project-card">
           <div class="project-glow"></div>
-          <div class="project-chip">Analytics · Dashboard</div>
-          <h3 class="project-title">Admissions & Enrollment Analytics</h3>
-          <div class="project-meta">SQL · Power BI / Tableau</div>
+          <div class="project-chip">Data Visualization</div>
+          <h3 class="project-title">Diabetes Dashboard – Healthcare Analytics</h3>
+          <div class="project-meta">Tableau · Tableau Prep · Excel</div>
           <p class="project-desc">
-            Built an analytics layer and dashboard summarizing application volumes,
-            conversion rates, and enrollment trends, enabling stakeholders to track
-            funnel performance and identify programs needing additional outreach.
+            Developed an interactive Tableau dashboard for 101K+ diabetes records across 130
+            hospitals over 10 years. Cleaned and shaped the data using Tableau Prep, then
+            visualized demographics, medications, readmissions, and utilization to support
+            better decision-making for clinicians and administrators.
           </p>
           <div class="project-footer">
             <div class="project-links">
               <a
                 class="project-link"
-                href="GITHUB_OR_CASE_STUDY_LINK_PROJECT2"
-                target="_blank"
-                >Case Study</a
-              >
-              <a
-                class="project-link"
-                href="DASHBOARD_LINK_IF_AVAILABLE"
+                href="#"
                 target="_blank"
                 >Dashboard</a
               >
+              <a
+                class="project-link"
+                href="#"
+                target="_blank"
+                >Project Details</a
+              >
             </div>
             <div class="project-tech">
-              Star schema · KPI tracking · Drill-down views
+              Healthcare analytics · KPI design
             </div>
           </div>
         </article>
@@ -1070,32 +1079,32 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
         <!-- Project 3 -->
         <article class="project-card">
           <div class="project-glow"></div>
-          <div class="project-chip">Machine Learning · Spark</div>
-          <h3 class="project-title">Colon Cancer Classification (Spark MLlib)</h3>
-          <div class="project-meta">Spark · MLlib · Cross-Validation</div>
+          <div class="project-chip">LLM · Platform Engineering</div>
+          <h3 class="project-title">AI-Powered IT Asset Management Chatbot</h3>
+          <div class="project-meta">Python · LangChain · FastAPI · AWS Lambda · Docker</div>
           <p class="project-desc">
-            Implemented a decision tree classification pipeline using Spark MLlib
-            with cross-validation and hyperparameter tuning to classify samples
-            based on clinical features, focusing on model reproducibility and
-            experiment tracking.
+            Designed a microservices-based LLM chatbot for IT asset queries using Retrieval-Augmented
+            Generation (RAG). Built a FastAPI backend, integrated Pinecone for vector search, and
+            deployed via Docker and AWS Lambda + API Gateway, reducing manual search time for asset
+            information by ~60%.
           </p>
           <div class="project-footer">
             <div class="project-links">
               <a
                 class="project-link"
-                href="GITHUB_REPO_LINK_PROJECT3"
+                href="#"
                 target="_blank"
                 >Code</a
               >
               <a
                 class="project-link"
-                href="WRITEUP_LINK_PROJECT3"
+                href="#"
                 target="_blank"
-                >Technical Write-up</a
+                >Architecture</a
               >
             </div>
             <div class="project-tech">
-              Pipelines · Grid search · Evaluation metrics
+              RAG · Serverless · MLOps-adjacent workflows
             </div>
           </div>
         </article>
@@ -1103,25 +1112,32 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
         <!-- Project 4 -->
         <article class="project-card">
           <div class="project-glow"></div>
-          <div class="project-chip">Architecture · Design</div>
-          <h3 class="project-title">Modern Data Platform Blueprint</h3>
-          <div class="project-meta">Cloud Data Architecture · Diagramming</div>
+          <div class="project-chip">Quant · Backtesting</div>
+          <h3 class="project-title">Trading Strategy Analyzer</h3>
+          <div class="project-meta">Python · Pandas · NumPy · Matplotlib</div>
           <p class="project-desc">
-            Designed a conceptual data platform for analytics and reporting, including
-            ingestion, raw and curated zones, semantic models, and BI access patterns,
-            documenting trade-offs between lake, warehouse, and lakehouse approaches.
+            Built a Python backtesting engine for short-term trading strategies using historical
+            order book data. Implemented vectorized computations for ~10× speedup, modularized
+            strategies (mean reversion, momentum), and visualized PnL, drawdown, and Sharpe ratio
+            to evaluate performance.
           </p>
           <div class="project-footer">
             <div class="project-links">
               <a
                 class="project-link"
-                href="ARCHITECTURE_DIAGRAM_OR_CASE_STUDY_LINK"
+                href="#"
                 target="_blank"
-                >Architecture</a
+                >Code</a
+              >
+              <a
+                class="project-link"
+                href="#"
+                target="_blank"
+                >Analysis</a
               >
             </div>
             <div class="project-tech">
-              Layered zones · Lineage · Governance considerations
+              Backtesting · Performance analytics
             </div>
           </div>
         </article>
@@ -1132,10 +1148,9 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
     <section id="experience">
       <div class="section-header">
         <div class="section-kicker">Background</div>
-        <h2 class="section-title">Experience & education</h2>
+        <h2 class="section-title">Experience &amp; education</h2>
         <p class="section-subtitle">
-          A brief overview of my academic background and hands-on experience supporting
-          students, customers, and data-driven operations.
+          A snapshot of my work across data, customer-facing roles, research, and leadership.
         </p>
       </div>
       <div class="timeline">
@@ -1143,57 +1158,119 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
           <div class="timeline-column-title">Experience</div>
 
           <div class="timeline-item">
-            <div class="timeline-role">Customer Success / Technical Support</div>
-            <div class="timeline-org">Hatica · (Prior Role)</div>
-            <div class="timeline-meta">Worked with customers, data, and tools like Salesforce</div>
+            <div class="timeline-role">Customer Success Associate &amp; Associate Engineer</div>
+            <div class="timeline-org">Hatica Labs Pvt Ltd · India</div>
+            <div class="timeline-meta">Feb 2024 – Jun 2024</div>
             <ul class="timeline-bullets">
               <li>
-                Supported customers in understanding product insights and data-driven reports,
-                collaborating with cross-functional teams to resolve issues.
+                Led onboarding and training for an engineering analytics SaaS platform, managing key
+                accounts and ensuring adoption and renewals.
               </li>
               <li>
-                Used internal tools and dashboards to troubleshoot, investigate, and document
-                recurring themes and product feedback.
+                Analyzed product usage and customer behavior, building dashboards and reports that
+                informed onboarding strategy and product decisions.
+              </li>
+              <li>
+                Supported technical integrations and helped automate customer data pipelines using
+                Python, APIs, and CI/CD workflows.
               </li>
             </ul>
           </div>
 
           <div class="timeline-item">
-            <div class="timeline-role">Student / Academic Projects</div>
-            <div class="timeline-org">Arizona State University</div>
+            <div class="timeline-role">Project Trainee – Data &amp; ML</div>
+            <div class="timeline-org">Brillio · India</div>
+            <div class="timeline-meta">Jun 2023 – Sep 2023</div>
             <ul class="timeline-bullets">
               <li>
-                Completed course projects involving Spark, MLlib, and data pipelines,
-                focusing on clean code, documentation, and reproducible workflows.
+                Developed data pipelines and ML models for sales forecasting using Python, Pandas,
+                Scikit-learn, and SQL, including data cleaning and feature engineering.
+              </li>
+              <li>
+                Delivered dashboards and reports that surfaced key business insights and supported
+                decision-making in manufacturing and sales workflows.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">Analyst Intern</div>
+            <div class="timeline-org">Idea Infinity IT Solutions · India</div>
+            <div class="timeline-meta">Mar 2023 – May 2023</div>
+            <ul class="timeline-bullets">
+              <li>
+                Analyzed transaction data for Automated Teller Payment (ATP) systems to optimize
+                payment workflows and ensure compliance.
+              </li>
+              <li>
+                Conducted UAT, created SOPs and testing protocols, and improved overall operational
+                efficiency and user experience.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">Research Intern – NLP</div>
+            <div class="timeline-org">DRDO · India</div>
+            <div class="timeline-meta">Aug 2022 – Nov 2022</div>
+            <ul class="timeline-bullets">
+              <li>
+                Built and fine-tuned a BiLSTM-based sequence-to-sequence model for multilingual
+                transcription and translation with 88%+ accuracy on test data.
+              </li>
+              <li>
+                Preprocessed and modeled 10k+ annotated samples using TensorFlow, NLTK, and spaCy,
+                and documented results in internal reports.
               </li>
             </ul>
           </div>
         </div>
 
         <div>
-          <div class="timeline-column-title">Education</div>
+          <div class="timeline-column-title">Education &amp; Leadership</div>
 
           <div class="timeline-item">
             <div class="timeline-role">M.S. Information Technology</div>
-            <div class="timeline-org">Arizona State University</div>
+            <div class="timeline-org">Arizona State University · USA</div>
             <div class="timeline-meta">Aug 2024 – May 2026 (expected)</div>
             <ul class="timeline-bullets">
               <li>
-                Coursework focused on data engineering, analytics, databases, and software systems.
+                Coursework: Analyzing Big Data, Advanced Database Management, Data Visualization,
+                Information System Development, Predictive Analytics.
               </li>
               <li>
-                Hands-on labs using Python, SQL, Spark, and cloud-related tooling.
+                GPA: 4.0/4.0 (current) and focused on data engineering and analytics projects.
               </li>
             </ul>
           </div>
 
           <div class="timeline-item">
-            <div class="timeline-role">B.E. / B.Tech (Information Science / Related)</div>
-            <div class="timeline-org">BMS College of Engineering</div>
+            <div class="timeline-role">B.E. Information Science &amp; Engineering</div>
+            <div class="timeline-org">BMS College of Engineering · India</div>
+            <div class="timeline-meta">Aug 2019 – Jul 2023</div>
             <ul class="timeline-bullets">
               <li>
-                Built foundational skills in programming, algorithms, and computer systems,
-                with exposure to data and software engineering topics.
+                GPA: ~3.9/4.0, with coursework in Data Structures &amp; Algorithms, Operating Systems,
+                OOP, AI/ML, and Deep Learning.
+              </li>
+              <li>
+                Completed research on EEG signals and cognitive effects of meditation, including a
+                Python package for data processing and visualization.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">Teaching, Events &amp; Community</div>
+            <div class="timeline-org">BMSCE &amp; NGOs</div>
+            <ul class="timeline-bullets">
+              <li>
+                Teaching Assistant for Python and ML labs, supporting 100+ students with debugging,
+                algorithm design, and model evaluation.
+              </li>
+              <li>
+                Events &amp; PR Lead at Sahai (mental health NGO) and leadership roles in Rotaract
+                and student clubs, organizing awareness drives and large cultural/technical events.
               </li>
             </ul>
           </div>
@@ -1207,44 +1284,44 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
         <div class="section-kicker">Contact</div>
         <h2 class="section-title">Let’s connect</h2>
         <p class="section-subtitle">
-          If you’re hiring for data engineering, analytics, or data architecture roles,
-          I’d be happy to share more details about my projects and background.
+          I’m actively looking for internships and new-grad opportunities in data engineering,
+          analytics, and related roles.
         </p>
       </div>
       <div class="contact-grid">
         <div class="contact-card">
           <div class="contact-item">
             <span>Email</span>
-            <a href="mailto:YOUR_EMAIL_HERE">YOUR_EMAIL_HERE</a>
+            <a href="mailto:rbangal9@asu.edu">rbangal9@asu.edu</a>
           </div>
           <div class="contact-item">
             <span>LinkedIn</span>
             <a
-              href="YOUR_LINKEDIN_URL_HERE"
+              href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/"
               target="_blank"
-              >View LinkedIn profile</a
+              >linkedin.com/in/rakshitha-ravishankar-9b478a203/</a
             >
           </div>
           <div class="contact-item">
             <span>GitHub</span>
             <a
-              href="YOUR_GITHUB_PROFILE_URL_HERE"
+              href="https://github.com/YOUR_GITHUB_USERNAME"
               target="_blank"
-              >View GitHub</a
+              >github.com/YOUR_GITHUB_USERNAME</a
             >
           </div>
           <div class="contact-note">
-            I’m open to internships and new-grad opportunities in data engineering, data
-            analytics, and related roles. Feel free to reach out.
+            Feel free to reach out with role details or collaboration ideas. I’m happy to share
+            more about any of these projects or build something tailored to your use case.
           </div>
         </div>
         <div class="contact-card">
           <div class="contact-item">
             <span>Next steps</span>
             <p>
-              · Download my resume using the button above on this page. <br />
-              · Review my GitHub repositories for project code and documentation. <br />
-              · Send a quick LinkedIn message or email with the role details and we can schedule a time to talk.
+              · Download my resume using the button at the top of this page. <br />
+              · Explore my GitHub repositories for code and documentation. <br />
+              · Send a brief message on LinkedIn or email, and we can set up time to talk.
             </p>
           </div>
         </div>
@@ -1255,11 +1332,11 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
   <!-- ====== FOOTER ====== -->
   <footer>
     <div class="footer-inner">
-      <div>© <span id="year"></span> Your Name. Built with GitHub Pages.</div>
+      <div>© <span id="year"></span> Rakshitha Bangalore Ravishankar. Built with GitHub Pages.</div>
       <div class="footer-links">
         <a href="#home">Back to top</a>
-        <a href="YOUR_LINKEDIN_URL_HERE" target="_blank">LinkedIn</a>
-        <a href="YOUR_GITHUB_PROFILE_URL_HERE" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">GitHub</a>
       </div>
     </div>
   </footer>
@@ -1292,4 +1369,3 @@ agg_df.write.mode(<span class="str">"overwrite"</span>)\
   </script>
 </body>
 </html>
-

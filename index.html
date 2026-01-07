@@ -637,63 +637,52 @@
       margin-bottom: 0.28rem;
     }
 
-/* CERTIFICATION BADGE SECTION */
-.cert-badge-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1.5rem;
-}
+    /* CERTIFICATION BADGE SECTION */
+    .cert-badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
 
-.cert-badge {
-  padding: 8px 14px;
-  font-size: 0.85rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(15, 23, 42, 0.85);
-  color: var(--subtext);
-  transition: 0.2s ease;
-  box-shadow: 0 0 14px rgba(0,0,0,0.4);
-}
+    .cert-badge {
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--subtext);
+      transition: 0.2s ease;
+      box-shadow: 0 0 14px rgba(0,0,0,0.4);
+    }
 
-/* Hover Neon Glow */
-.cert-badge:hover {
-  border-color: var(--accent);
-  color: var(--text);
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.45);
-  transform: translateY(-2px);
-}
+    .cert-badge:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.45);
+      transform: translateY(-2px);
+    }
 
-/* Category Color Variants */
-.cert-badge.aws {
-  border-color: rgba(56,189,248,0.4);
-  color: #7dd3fc;
-}
+    .cert-badge.aws {
+      border-color: rgba(56,189,248,0.4);
+      color: #7dd3fc;
+    }
 
-.cert-badge.google {
-  border-color: rgba(74,222,128,0.4);
-  color: #86efac;
-}
+    .cert-badge.google {
+      border-color: rgba(74,222,128,0.4);
+      color: #86efac;
+    }
 
-.cert-badge.course {
-  border-color: rgba(168,85,247,0.4);
-  color: #d8b4fe;
-}
+    .cert-badge.course {
+      border-color: rgba(168,85,247,0.4);
+      color: #d8b4fe;
+    }
 
-.cert-badge.udemy {
-  border-color: rgba(244,63,94,0.4);
-  color: #fda4af;
-}
+    .cert-badge.udemy {
+      border-color: rgba(244,63,94,0.4);
+      color: #fda4af;
+    }
 
-/* Responsive */
-@media (max-width: 640px) {
-  .cert-badge {
-    font-size: 0.78rem;
-    padding: 6px 12px;
-  }
-}
-
-    
     /* CONTACT --------------------------------------------------- */
 .contact-grid {
   display: grid;
@@ -765,97 +754,111 @@
   line-height: 1.5;
 }
 
+/* FOOTER */
+footer {
+  border-top: 1px solid rgba(30, 64, 175, 0.6);
+  margin-top: 3rem;
+  color: var(--subtext);
+  background: transparent;
+}
+
+.footer-inner {
+  width: 92%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+}
+
+.footer-inner > .copyright {
+  flex: 1 1 auto;
+  min-width: 180px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.footer-links a {
+  color: var(--subtext);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+  background: rgba(56, 189, 248, 0.06);
+  text-decoration: none;
+}
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
+  .nav ul {
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-right {
+    order: -1;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .projects-grid,
   .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .community-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
+@media (max-width: 640px) {
+  .container {
+    width: 92%;
+    padding-top: 4.2rem;
+  }
+  .hero-title {
+    font-size: 2.1rem;
+  }
+  section {
+    padding-top: 3.8rem;
+  }
+  nav .inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    /* RESPONSIVE ----------------------------------------------- */
-    @media (max-width: 900px) {
-      nav ul {
-        gap: 1rem;
-        font-size: 0.85rem;
-      }
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-right {
-        order: -1;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .projects-grid,
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .community-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        width: 92%;
-        padding-top: 4.2rem;
-      }
-      .hero-title {
-        font-size: 2.1rem;
-      }
-      section {
-        padding-top: 3.8rem;
-      }
-      nav .inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-        .footer-links {
-      display: flex;
-      gap: 0.75rem;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    /* RESPONSIVE ----------------------------------------------- */
-    @media (max-width: 900px) {
-      nav ul {
-        gap: 1rem;
-        font-size: 0.85rem;
-      }
-
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-right {
-        order: -1;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .projects-grid,
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .community-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
+  .footer-links {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}
   </style>
 </head>
 
@@ -915,12 +918,14 @@
               href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/"
               target="_blank"
               class="btn btn-primary"
+              rel="noopener"
             >LinkedIn</a>
 
             <a
-              href="YOUR_RESUME_LINK_HERE"
+              href="#"
               target="_blank"
               class="btn btn-ghost"
+              rel="noopener"
             >View Resume</a>
 
             <a href="#projects" class="btn btn-ghost">View Projects</a>
@@ -985,83 +990,72 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
     </section>
 
     <!-- SKILLS -->
-  <section id="skills">
-  <div class="section-header">
-    <h2 class="section-title">Skills</h2>
-    <p class="section-sub">
-      A comprehensive skill set built through hands-on experience across data engineering, analytics, cloud, ML, and full-stack development.
-    </p>
-  </div>
-
-  <div class="skills-grid">
-
-    <!-- PROGRAMMING -->
-    <article class="skill-card">
-      <div class="skill-title">Programming & Scripting</div>
-      <div class="skill-tags">
-        Python · SQL · Java · C++ · R · JavaScript · Bash/Shell
+    <section id="skills">
+      <div class="section-header">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-sub">
+          A comprehensive skill set built through hands-on experience across data engineering, analytics, cloud, ML, and full-stack development.
+        </p>
       </div>
-    </article>
 
-    <!-- DATA ENGINEERING -->
-    <article class="skill-card">
-      <div class="skill-title">Data Engineering</div>
-      <div class="skill-tags">
-        ETL/ELT Pipelines · Data Modeling · Data Cleaning · PySpark · Pandas · NumPy · PostgreSQL · MongoDB · Pinecone (Vector DB) · Serverless Pipelines
+      <div class="skills-grid">
+        <article class="skill-card">
+          <div class="skill-title">Programming & Scripting</div>
+          <div class="skill-tags">
+            Python · SQL · Java · C++ · R · JavaScript · Bash/Shell
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-title">Data Engineering</div>
+          <div class="skill-tags">
+            ETL/ELT Pipelines · Data Modeling · Data Cleaning · PySpark · Pandas · NumPy · PostgreSQL · MongoDB · Pinecone (Vector DB) · Serverless Pipelines
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-title">Machine Learning & AI</div>
+          <div class="skill-tags">
+            Scikit-learn · TensorFlow/Keras · NLP (Seq2Seq, Tokenization, Preprocessing) · LLMs · RAG Pipelines · HuggingFace Models · Feature Engineering · Model Evaluation
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-title">Analytics & BI</div>
+          <div class="skill-tags">
+            Tableau · Tableau Prep · Power BI · KPI Design · EDA · Data Visualization · Storytelling · Performance Metrics
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-title">Cloud & DevOps</div>
+          <div class="skill-tags">
+            AWS Lambda · API Gateway · Docker · FastAPI · REST APIs · CI/CD (GitHub Actions) · Netlify · Render · Serverless Architectures
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-title">Automation, Tools & Platforms</div>
+          <div class="skill-tags">
+            Git & GitHub · Postman · Salesforce · Jira · Confluence · Notion · Airtable · VS Code · GitHub Copilot · ChatGPT
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-title">Web Development</div>
+          <div class="skill-tags">
+            React · HTML/CSS · Material UI · API Integration
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-title">Soft Skills</div>
+          <div class="skill-tags">
+            Leadership · Stakeholder Management · Technical Communication · Documentation · Mentorship · Problem Solving · Team Collaboration
+          </div>
+        </article>
       </div>
-    </article>
-
-    <!-- MACHINE LEARNING -->
-    <article class="skill-card">
-      <div class="skill-title">Machine Learning & AI</div>
-      <div class="skill-tags">
-        Scikit-learn · TensorFlow/Keras · NLP (Seq2Seq, Tokenization, Preprocessing) · LLMs · RAG Pipelines · HuggingFace Models · Feature Engineering · Model Evaluation
-      </div>
-    </article>
-
-    <!-- ANALYTICS & BI -->
-    <article class="skill-card">
-      <div class="skill-title">Analytics & BI</div>
-      <div class="skill-tags">
-        Tableau · Tableau Prep · Power BI · KPI Design · EDA · Data Visualization · Storytelling · Performance Metrics
-      </div>
-    </article>
-
-    <!-- CLOUD & DEVOPS -->
-    <article class="skill-card">
-      <div class="skill-title">Cloud & DevOps</div>
-      <div class="skill-tags">
-        AWS Lambda · API Gateway · Docker · FastAPI · REST APIs · CI/CD (GitHub Actions) · Netlify · Render · Serverless Architectures
-      </div>
-    </article>
-
-    <!-- AUTOMATION & TOOLS -->
-    <article class="skill-card">
-      <div class="skill-title">Automation, Tools & Platforms</div>
-      <div class="skill-tags">
-        Git & GitHub · Postman · Salesforce · Jira · Confluence · Notion · Airtable · VS Code · GitHub Copilot · ChatGPT
-      </div>
-    </article>
-
-    <!-- WEB DEVELOPMENT -->
-    <article class="skill-card">
-      <div class="skill-title">Web Development</div>
-      <div class="skill-tags">
-        React · HTML/CSS · Material UI · API Integration
-      </div>
-    </article>
-
-    <!-- SOFT SKILLS -->
-    <article class="skill-card">
-      <div class="skill-title">Soft Skills</div>
-      <div class="skill-tags">
-        Leadership · Stakeholder Management · Technical Communication · Documentation · Mentorship · Problem Solving · Team Collaboration
-      </div>
-    </article>
-
-  </div>
-</section>
-
+    </section>
 
     <!-- PROJECTS -->
     <section id="projects">
@@ -1073,7 +1067,7 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
       </div>
 
       <div class="projects-grid">
-        <!-- Project 1 -->
+        <!-- Project cards (kept as you provided) -->
         <article class="project-card">
           <div class="project-chip">Data Engineering · Analytics</div>
           <h3 class="project-title">Enterprise Sales Data Pipeline & Insights Dashboard</h3>
@@ -1086,7 +1080,6 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
           <div class="project-tech">Tech: Python, SQL, PostgreSQL, Tableau, ChatGPT, Copilot</div>
         </article>
 
-        <!-- Project 2 -->
         <article class="project-card">
           <div class="project-chip">Healthcare · Visualization</div>
           <h3 class="project-title">Diabetes Data Visualization Dashboard</h3>
@@ -1099,7 +1092,6 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
           <div class="project-tech">Tech: Tableau, Tableau Prep, Excel</div>
         </article>
 
-        <!-- Project 3 -->
         <article class="project-card">
           <div class="project-chip">LLMs · Cloud · Automation</div>
           <h3 class="project-title">AI-Powered IT Asset Management Chatbot</h3>
@@ -1112,7 +1104,6 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
           <div class="project-tech">Tech: Python, LangChain, FastAPI, Docker, AWS Lambda, API Gateway, OpenAI API, Pinecone</div>
         </article>
 
-        <!-- Project 4 -->
         <article class="project-card">
           <div class="project-chip">LLMs · Full-Stack</div>
           <h3 class="project-title">AI Text Summarizer Web App</h3>
@@ -1125,7 +1116,6 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
           <div class="project-tech">Tech: React, Material-UI, FastAPI, Hugging Face BART, Netlify, Render</div>
         </article>
 
-        <!-- Project 5 -->
         <article class="project-card">
           <div class="project-chip">Research · Signal Processing</div>
           <h3 class="project-title">EEG Cognitive Patterns Study</h3>
@@ -1138,7 +1128,6 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
           <div class="project-tech">Tech: Python, NumPy, SciPy, MNE, Scikit-learn, Matplotlib, Plotly</div>
         </article>
 
-        <!-- Project 6 -->
         <article class="project-card">
           <div class="project-chip">NLP · Deep Learning</div>
           <h3 class="project-title">English–Hindi Language Translation Model</h3>
@@ -1151,7 +1140,6 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
           <div class="project-tech">Tech: Python, TensorFlow/Keras, LSTM, NLP preprocessing</div>
         </article>
 
-        <!-- Project 7 -->
         <article class="project-card">
           <div class="project-chip">Web App · EdTech</div>
           <h3 class="project-title">Proctor–Student Management Portal</h3>
@@ -1168,84 +1156,74 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
 
     <!-- EXPERIENCE -->
     <section id="experience">
-
       <div class="section-header">
-        
         <h2 class="section-title">Experience</h2>
       </div>
 
-      <!-- INDUSTRY EXPERIENCE -->
       <div class="industry-section">
         <h3 class="exp-heading">Industry Experience</h3>
 
         <div class="timeline neon-timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Associate Analyst — Hatica Labs Pvt Ltd</h4>
+              <span class="timeline-dates">January 2024 – June 2024 · India</span>
+              <ul>
+                <li>Analyzed product usage data, customer engagement metrics, and feature adoption trends for an engineering analytics SaaS platform, supporting data-driven decisions across Customer Success and Product teams.</li>
+                <li>Built and maintained interactive dashboards using SQL, Excel, and BI tools to track KPIs such as onboarding completion, user retention, churn risk, and overall account health for enterprise customers.</li>
+                <li>Conducted exploratory data analysis to identify onboarding bottlenecks, usage drop-offs, and upsell opportunities, contributing to improved renewal outcomes.</li>
+                <li>Translated customer feedback and business requirements into actionable insights and reports, collaborating with cross-functional stakeholders to prioritize product enhancements.</li>
+                <li>Supported leadership with recurring performance reports and ad-hoc analysis, enabling proactive decision-making and improved customer lifecycle management.</li>
+              </ul>
+            </div>
+          </div>
 
-  <!-- Hatica -->
-  <div class="timeline-item">
-    <div class="timeline-marker"></div>
-    <div class="timeline-content">
-      <h4>Associate Analyst — Hatica Labs Pvt Ltd</h4>
-      <span class="timeline-dates">January 2024 – June 2024 · India</span>
-      <ul>
-        <li>Analyzed product usage data, customer engagement metrics, and feature adoption trends for an engineering analytics SaaS platform, supporting data-driven decisions across Customer Success and Product teams.</li>
-        <li>Built and maintained interactive dashboards using SQL, Excel, and BI tools to track KPIs such as onboarding completion, user retention, churn risk, and overall account health for enterprise customers.</li>
-        <li>Conducted exploratory data analysis to identify onboarding bottlenecks, usage drop-offs, and upsell opportunities, contributing to improved renewal outcomes.</li>
-        <li>Translated customer feedback and business requirements into actionable insights and reports, collaborating with cross-functional stakeholders to prioritize product enhancements.</li>
-        <li>Supported leadership with recurring performance reports and ad-hoc analysis, enabling proactive decision-making and improved customer lifecycle management.</li>
-      </ul>
-    </div>
-  </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Project Trainee – Data Analyst — Brillio</h4>
+              <span class="timeline-dates">June 2023 – September 2023 · India</span>
+              <ul>
+                <li>Analyzed large-scale sales and operational datasets to identify trends, seasonality, and performance gaps, supporting data-driven decisions for business and manufacturing teams.</li>
+                <li>Built and optimized end-to-end data pipelines using Python, Pandas, and SQL to clean, transform, and aggregate data for analytical reporting and forecasting use cases.</li>
+                <li>Conducted exploratory data analysis (EDA) and feature engineering to uncover key drivers impacting sales performance and demand variability.</li>
+                <li>Developed analytical reports and dashboards to communicate insights on revenue trends, product performance, and process efficiency to cross-functional stakeholders.</li>
+                <li>Supported process validation and continuous improvement initiatives by translating analytical findings into actionable business recommendations.</li>
+              </ul>
+            </div>
+          </div>
 
-  <!-- Brillio -->
-  <div class="timeline-item">
-    <div class="timeline-marker"></div>
-    <div class="timeline-content">
-      <h4>Project Trainee – Data Analyst — Brillio</h4>
-      <span class="timeline-dates">June 2023 – September 2023 · India</span>
-      <ul>
-        <li>Analyzed large-scale sales and operational datasets to identify trends, seasonality, and performance gaps, supporting data-driven decisions for business and manufacturing teams.</li>
-        <li>Built and optimized end-to-end data pipelines using Python, Pandas, and SQL to clean, transform, and aggregate data for analytical reporting and forecasting use cases.</li>
-        <li>Conducted exploratory data analysis (EDA) and feature engineering to uncover key drivers impacting sales performance and demand variability.</li>
-        <li>Developed analytical reports and dashboards to communicate insights on revenue trends, product performance, and process efficiency to cross-functional stakeholders.</li>
-        <li>Supported process validation and continuous improvement initiatives by translating analytical findings into actionable business recommendations.</li>
-      </ul>
-    </div>
-  </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Business Analyst Intern — Idea Infinity IT Solutions</h4>
+              <span class="timeline-dates">March 2023 – May 2023 · India</span>
+              <ul>
+                <li>Analyzed ATP system transaction data to evaluate payment workflows, identify failure points, and ensure compliance with regulatory and business requirements.</li>
+                <li>Collaborated with business stakeholders and technical teams to translate functional requirements into detailed system specifications and test scenarios.</li>
+                <li>Executed User Acceptance Testing (UAT), validated system enhancements, and documented defects to ensure solutions met end-user and compliance expectations.</li>
+                <li>Developed Standard Operating Procedures (SOPs), workflow documentation, and testing protocols, improving process consistency and operational efficiency.</li>
+                <li>Supported continuous improvement initiatives by analyzing system performance data and recommending workflow optimizations.</li>
+              </ul>
+            </div>
+          </div>
 
-  <!-- Idea Infinity -->
-  <div class="timeline-item">
-    <div class="timeline-marker"></div>
-    <div class="timeline-content">
-      <h4>Business Analyst Intern — Idea Infinity IT Solutions</h4>
-      <span class="timeline-dates">March 2023 – May 2023 · India</span>
-      <ul>
-        <li>Analyzed ATP system transaction data to evaluate payment workflows, identify failure points, and ensure compliance with regulatory and business requirements.</li>
-        <li>Collaborated with business stakeholders and technical teams to translate functional requirements into detailed system specifications and test scenarios.</li>
-        <li>Executed User Acceptance Testing (UAT), validated system enhancements, and documented defects to ensure solutions met end-user and compliance expectations.</li>
-        <li>Developed Standard Operating Procedures (SOPs), workflow documentation, and testing protocols, improving process consistency and operational efficiency.</li>
-        <li>Supported continuous improvement initiatives by analyzing system performance data and recommending workflow optimizations.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- DRDO -->
-  <div class="timeline-item">
-    <div class="timeline-marker"></div>
-    <div class="timeline-content">
-      <h4>Research Analyst — Defense Research and Development Organization (DRDO)</h4>
-      <span class="timeline-dates">August 2022 – November 2022 · India</span>
-      <ul>
-        <li>Analyzed large multilingual text and speech datasets to extract patterns and insights supporting research on automated transcription and translation systems.</li>
-        <li>Performed extensive data preprocessing, cleaning, and feature extraction on 10,000+ annotated samples to improve data quality and analytical accuracy.</li>
-        <li>Evaluated model outputs and performance metrics, identifying error patterns and data gaps to guide iterative improvements and validation processes.</li>
-        <li>Collaborated with research scientists to translate analytical findings into documented insights, reports, and presentations.</li>
-        <li>Contributed to research documentation by summarizing results, visualizing trends, and communicating performance outcomes.</li>
-      </ul>
-    </div>
-  </div>
-
-</div>
-
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Research Analyst — Defense Research and Development Organization (DRDO)</h4>
+              <span class="timeline-dates">August 2022 – November 2022 · India</span>
+              <ul>
+                <li>Analyzed large multilingual text and speech datasets to extract patterns and insights supporting research on automated transcription and translation systems.</li>
+                <li>Performed extensive data preprocessing, cleaning, and feature extraction on 10,000+ annotated samples to improve data quality and analytical accuracy.</li>
+                <li>Evaluated model outputs and performance metrics, identifying error patterns and data gaps to guide iterative improvements and validation processes.</li>
+                <li>Collaborated with research scientists to translate analytical findings into documented insights, reports, and presentations.</li>
+                <li>Contributed to research documentation by summarizing results, visualizing trends, and communicating performance outcomes.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- COMMUNITY EXPERIENCE -->
@@ -1253,7 +1231,6 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
         <h3 class="exp-heading">Community & Leadership Experience</h3>
 
         <div class="community-grid">
-          <!-- ASU Next -->
           <div class="community-card">
             <h4>Community Connector — ASU Next Education Workforce</h4>
             <span class="card-dates">Apr 2025 – Present · Mesa, Arizona</span>
@@ -1268,7 +1245,6 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
             </ul>
           </div>
 
-          <!-- Sahai NGO -->
           <div class="community-card">
             <h4>Events & PR Lead — Sahai Mental Health NGO</h4>
             <span class="card-dates">Jun 2021 – Apr 2024 · Bangalore, India</span>
@@ -1282,7 +1258,6 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
             </ul>
           </div>
 
-          <!-- Rotaract / Utsav -->
           <div class="community-card">
             <h4>Event & Outreach Coordinator — Rotaract Club & Utsav Fest</h4>
             <span class="card-dates">Mar 2022 – Jun 2023 · Bangalore, India</span>
@@ -1300,144 +1275,128 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
       </div>
     </section>
 
-  <section id="certifications">
-  <div class="section-header">
-    <div class="section-kicker">Certifications</div>
-    <h2 class="section-title">Certifications & Trainings</h2>
-    <p class="section-sub">
-      Verified credentials across cloud, machine learning, NLP, data engineering, analytics, and business intelligence.
-    </p>
-  </div>
-
-  <div class="cert-badge-container">
-
-    <!-- AWS Certifications -->
-    <span class="cert-badge aws">AWS Machine Learning Foundations</span>
-    <span class="cert-badge aws">AWS ML for Natural Language Processing</span>
-    <span class="cert-badge aws">AWS Data Engineering</span>
-
-    <!-- Google -->
-    <span class="cert-badge google">Google Data Analytics Certificate</span>
-
-    <!-- Coursera -->
-    <span class="cert-badge course">Stanford ML (Andrew Ng)</span>
-
-    <!-- Udemy -->
-    <span class="cert-badge udemy">Power BI Desktop for BI</span>
-    <span class="cert-badge udemy">Oracle SQL Bootcamp</span>
-    <span class="cert-badge udemy">Data Warehouse Fundamentals</span>
-    <span class="cert-badge udemy">Mastering Data Modeling</span>
-
-  </div>
-</section>
-
-
-
-   
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-header">
-    <div class="section-kicker">Contact</div>
-    <h2 class="section-title">Let’s connect</h2>
-    <p class="section-sub">
-      I’m open to internships, part-time roles, and new-grad opportunities starting <strong>May 2026</strong>. 
-      If my background looks like a fit, I’d love to connect — I typically reply within 24–48 hours.
-    </p>
-  </div>
-
-  <div class="contact-grid">
-
-    <!-- LEFT CONTACT CARD -->
-    <div class="contact-card">
-      <div class="contact-item">
-        <span>Email</span>
-        <a href="mailto:rbangal9@asu.edu?subject=Opportunity%20-%20Data%20Role">
-          rbangal9@asu.edu
-        </a>
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <div class="section-header">
+        <div class="section-kicker">Certifications</div>
+        <h2 class="section-title">Certifications & Trainings</h2>
+        <p class="section-sub">
+          Verified credentials across cloud, machine learning, NLP, data engineering, analytics, and business intelligence.
+        </p>
       </div>
 
-      <div class="contact-item">
-        <span>LinkedIn</span>
-        <a
-          href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/"
-          target="_blank"
-          rel="noopener"
-        >
-          linkedin.com/in/rakshitha-ravishankar-9b478a203/
-        </a>
+      <div class="cert-badge-container">
+        <span class="cert-badge aws">AWS Machine Learning Foundations</span>
+        <span class="cert-badge aws">AWS ML for Natural Language Processing</span>
+        <span class="cert-badge aws">AWS Data Engineering</span>
+        <span class="cert-badge google">Google Data Analytics Certificate</span>
+        <span class="cert-badge course">Stanford ML (Andrew Ng)</span>
+        <span class="cert-badge udemy">Power BI Desktop for BI</span>
+        <span class="cert-badge udemy">Oracle SQL Bootcamp</span>
+        <span class="cert-badge udemy">Data Warehouse Fundamentals</span>
+        <span class="cert-badge udemy">Mastering Data Modeling</span>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <div class="section-kicker">Contact</div>
+        <h2 class="section-title">Let’s connect</h2>
+        <p class="section-sub">
+          I’m open to internships, part-time roles, and new-grad opportunities starting <strong>May 2026</strong>. 
+          If my background looks like a fit, I’d love to connect — I typically reply within 24–48 hours.
+        </p>
       </div>
 
-      <div class="contact-item">
-        <span>GitHub</span>
-        <a
-          href="https://github.com/YOUR_GITHUB_USERNAME"
-          target="_blank"
-          rel="noopener"
-        >
-          github.com/YOUR_GITHUB_USERNAME
-        </a>
+      <div class="contact-grid">
+
+        <!-- LEFT CONTACT CARD -->
+        <div class="contact-card">
+          <div class="contact-item">
+            <span>Email</span>
+            <a href="mailto:rbangal9@asu.edu?subject=Opportunity%20-%20Data%20Role">
+              rbangal9@asu.edu
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <span>LinkedIn</span>
+            <a
+              href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/"
+              target="_blank"
+              rel="noopener"
+            >
+              linkedin.com/in/rakshitha-ravishankar-9b478a203/
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <span>GitHub</span>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
+              github.com/YOUR_GITHUB_USERNAME
+            </a>
+          </div>
+
+          <p class="contact-message" style="margin-top:0.8rem; color:var(--subtext);">
+            I’m currently a master’s student and actively exploring opportunities where I can learn from experienced teams while contributing through my technical skills and academic projects.
+          </p>
+
+          <div style="margin-top:1rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="mailto:rbangal9@asu.edu?subject=Opportunity%20-%20Data%20Role">
+              Email me
+            </a>
+            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+              View resume
+            </a>
+            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">
+              Schedule 15-min
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT CONTACT CARD -->
+        <div class="contact-card">
+          <span
+            class="contact-subheading"
+            style="display:block; margin-bottom:0.6rem; color:var(--subtext); letter-spacing:0.1em;"
+          >
+            WHAT I’M LOOKING FOR
+          </span>
+
+          <ul style="color: var(--subtext); padding-left:1rem; font-size:0.88rem; line-height:1.5;">
+            <li>Internship, part-time, or new-grad roles starting <strong>May 2026</strong></li>
+            <li>Data Engineering, Analytics, or Business Intelligence teams</li>
+            <li>Hands-on work with real datasets and practical data pipelines</li>
+            <li>A collaborative environment with learning and mentorship</li>
+          </ul>
+
+          <p style="margin-top:0.6rem; color:var(--subtext);">
+            I’m excited to grow as a data professional while contributing to meaningful, real-world problems.
+          </p>
+        </div>
+
       </div>
-
-      <p class="contact-message" style="margin-top:0.8rem; color:var(--subtext);">
-        I’m currently a master’s student and actively exploring opportunities where I can learn from experienced teams while contributing through my technical skills and academic projects.
-      </p>
-
-      <div style="margin-top:1rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
-        <a class="btn btn-primary" href="mailto:rbangal9@asu.edu?subject=Opportunity%20-%20Data%20Role">
-          Email me
-        </a>
-        <a class="btn btn-ghost" href="YOUR_RESUME_LINK_HERE" target="_blank" rel="noopener">
-          View resume
-        </a>
-        <a class="btn btn-ghost" href="YOUR_SCHEDULER_LINK" target="_blank" rel="noopener">
-          Schedule 15-min
-        </a>
-      </div>
-    </div>
-
-    <!-- RIGHT CONTACT CARD -->
-    <div class="contact-card">
-      <span
-        class="contact-subheading"
-        style="display:block; margin-bottom:0.6rem; color:var(--subtext); letter-spacing:0.1em;"
-      >
-        WHAT I’M LOOKING FOR
-      </span>
-
-      <ul style="color: var(--subtext); padding-left:1rem; font-size:0.88rem; line-height:1.5;">
-        <li>Internship, part-time, or new-grad roles starting <strong>May 2026</strong></li>
-        <li>Data Engineering, Analytics, or Business Intelligence teams</li>
-        <li>Hands-on work with real datasets and practical data pipelines</li>
-        <li>A collaborative environment with learning and mentorship</li>
-      </ul>
-
-      <p style="margin-top:0.6rem; color:var(--subtext);">
-        I’m excited to grow as a data professional while contributing to meaningful, real-world problems.
-      </p>
-    </div>
-
-  </div>
-</section>
-
+    </section>
 
   </main>
 
   <footer>
     <div class="footer-inner">
-      <div>© 2025 Rakshitha Bangalore Ravishankar · All rights reserved.</div>
-      <div class="footer-links">
-        <a href="#home">Top</a>
-        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/" target="_blank">LinkedIn</a>
+      <div class="copyright">
+        © 2025 Rakshitha Bangalore Ravishankar · All rights reserved.
       </div>
+
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="#home">Top</a>
+        <a href="#" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
     </div>
   </footer>
 </body>
 </html>
-
-
-
-
-
-
-

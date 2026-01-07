@@ -1025,8 +1025,8 @@ footer::before {
 
           <div class="hero-card">
             <div class="hero-card-header">
-              <span>etl_pipeline.py</span>
-              <span class="hero-card-badge">Pipeline · dev</span>
+              <span>data_analysis.py</span>
+              <span class="hero-card-badge">Analytics · insights</span>
             </div>
             <div class="code">
               <div class="code-header">
@@ -1037,20 +1037,31 @@ footer::before {
                 </div>
                 <span>sales_etl()</span>
               </div>
-              <pre><span class="comment"># example: batch ETL for analytics</span>
+              <pre><span class="comment"># example:KPI analysis for business reporting</span>
 <span class="kw">import</span> pandas <span class="kw">as</span> pd
 
-df = pd.read_csv(<span class="str">"sales_raw.csv"</span>)
-df = df.drop_duplicates(<span class="str">"order_id"</span>)
 
-df[<span class="str">"order_date"</span>] = pd.to_datetime(df[<span class="str">"order_date"</span>])
-df = df[df.order_date &gt;= <span class="str">"2024-01-01"</span>]
 
-agg = (df.groupby(<span class="str">"region"</span>)
-         .sales_amount.sum()
-         .reset_index())
 
-agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class="kw">False</span>)</pre>
+df = pd.read_csv("sales_raw.csv")
+
+# basic preprocessing
+df["order_date"] = pd.to_datetime(df["order_date"])
+df = df[df["order_date"] >= "2024-01-01"]
+
+# calculate KPIs
+kpi_summary = (
+    df.groupby("region")
+      .agg(
+          total_sales=("sales_amount", "sum"),
+          avg_order_value=("sales_amount", "mean"),
+          order_count=("order_id", "count")
+      )
+      .reset_index()
+)
+
+
+kpi_summary.to_csv(<span class="str">"clean/sales_kpis.csv"</span>, index=<span class="kw">False</span>)</pre>
             </div>
           </div>
         </div>

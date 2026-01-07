@@ -856,6 +856,76 @@
       }
     }
 
+   /* FOOTER --------------------------------------------------- */
+footer {
+  position: relative;
+  margin-top: 3rem;
+  padding: 1rem 0;
+  background: transparent;
+  color: var(--subtext);
+}
+
+/* thin line before footer */
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(56,189,248,0.05),
+    rgba(56,189,248,0.25),
+    rgba(56,189,248,0.05)
+  );
+}
+
+/* footer layout */
+.footer-inner {
+  width: 92%;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* left + extreme right */
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+/* right-aligned links */
+.footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-links a {
+  color: var(--subtext);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+  }
+}
+
+
+
+
   </style>
 </head>
 
@@ -1423,15 +1493,25 @@ agg.to_csv(<span class="str">"clean/region_sales.csv"</span>, index=<span class=
   </main>
 
   <footer>
-    <div class="footer-inner">
-      <div>© 2025 Rakshitha Bangalore Ravishankar · All rights reserved.</div>
-      <div class="footer-links">
-        <a href="#home">Top</a>
-        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/" target="_blank">LinkedIn</a>
-      </div>
+  <div class="footer-inner">
+    <!-- LEFT -->
+    <div>
+      © 2025 Rakshitha Bangalore Ravishankar · All rights reserved.
     </div>
-  </footer>
+
+    <!-- RIGHT -->
+    <div class="footer-links">
+      <a href="#home">Top</a>
+      <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener">
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/rakshitha-ravishankar-9b478a203/" target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
 
